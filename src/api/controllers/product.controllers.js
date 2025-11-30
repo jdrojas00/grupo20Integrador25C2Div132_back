@@ -75,17 +75,17 @@ export const getProductsByCategory = async (req, res) => {
 export const createProduct = async (req, res) => {
 
     try {
-        let { name, image, category, price } = req.body;
+        let { name, category, price, image } = req.body;
         console.log(req.body);
         console.log(`Nombre producto: ${name}`);
 
-        if (!category || !image || !name || !price) {
+        if (!name || !category || !price || !image) {
             return res.status(400).json({
                 message: "Datos invalidos, asegurate de enviar todos los campos"
             });
         }
 
-        let [rows] = await ProductModel.insertProduct(name, image, category, price);
+        let [rows] = await ProductModel.insertProduct(name, category, price, image);
 
         res.status(201).json({
             message: "Producto creado con exito!",

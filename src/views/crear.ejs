@@ -4,26 +4,25 @@
 <main>
     <h1> <%= about %> </h1>
 
-    <!-- A menos que enviemos este formulario con el envio nativo del formulario HTML, no necesitamos poner ni action ni method -->
     <form id="altaProducts-form" class="products-form-amplio">
 
         <label for="nameProd">Nombre</label>
-        <input type="text" name="nombre" id="nameProd" required>
+        <input type="text" name="name" id="nameProd" required>
         <br>
 
         <label for="imageProd">Imagen</label>
-        <input type="text" name="imagen" id="imageProd" required>
+        <input type="text" name="image" id="imageProd" required>
         <br>
 
         <label for="categoryProd">Categoria</label>
-        <select name="tipo" id="categoryProd" required>
+        <select name="category" id="categoryProd" required>
             <option value="camiseta">camiseta</option>
             <option value="calzado">calzado</option>
         </select>
         <br>
 
         <label for="priceProd">Precio</label>
-        <input type="number" name="precio" id="priceProd" required>
+        <input type="number" name="price" id="priceProd" required>
         <br>
 
         <input type="submit" value="Crear producto">

@@ -16,9 +16,9 @@ const selectProductbyType = (category) => {
     return connection.query(sql, [category]);
 }
 
-const insertProduct = (name, image, category, price) => {
-    let sql = "INSERT INTO productos (name, image, category, price) VALUES (?, ?, ?, ?)";
-    return connection.query(sql, [name, image, category, price]);
+const insertProduct = (name, category, price, image) => {
+    let sql = "INSERT INTO productos (nombre, tipo, precio, imagen) VALUES (?, ?, ?, ?)";
+    return connection.query(sql, [name, category, price, image]);
 }
 
 const updateProduct = (name, image, category, price, active, id) => {
