@@ -37,12 +37,11 @@ function mostrarProducto(producto) {
 
     let htmlProducto = `
         <li class="li-listados">
-            <img src="${producto.image}" alt="${producto.name}" class="img-listados">
-            <p>Id: ${producto.id}/ Nombre: ${producto.name}/ <strong>Precio: $${producto.price}</strong></p>
+            <img src="${producto.imagen}" alt="${producto.nombre}" class="card-producto">
+            <p>Id: ${producto.id}<br>Nombre: ${producto.nombre}<br>Tipo: ${producto.tipo}<br><strong>Precio: $${producto.precio}</strong></p>
         </li>
-        <li class="li-botonera">
-            <input type="button" id="deleteProduct_button" value="Eliminar producto">
-        </li>
+        
+        <input type="button" class="btn-eliminar" id="deleteProduct_button" value="Eliminar producto">
         `;
 
     listado_productos.innerHTML = htmlProducto;

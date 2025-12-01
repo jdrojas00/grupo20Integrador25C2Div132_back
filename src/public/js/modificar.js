@@ -36,12 +36,11 @@ function mostrarProducto(producto) {
 
     let htmlProducto = `
         <li class="li-listados">
-            <img src="${producto.image}" alt="${producto.name}" class="img-listados">
-            <p>Id: ${producto.id}/ Nombre: ${producto.name}/ <strong>Precio: $${producto.price}</strong></p>
+            <img src="${producto.imagen}" alt="${producto.nombre}" class="card-producto">
+            <p>Id: ${producto.id}<br>Nombre: ${producto.nombre}<br>Tipo: ${producto.tipo}<br><strong>Precio: $${producto.precio}</strong></p>
         </li>
-        <li class="li-botonera">
-            <input type="button" id="updateProduct_button" value="Actualizar producto">
-        </li>
+        
+        <input type="button" class="btn-actualizar" id="updateProduct_button" value="Actualizar producto">
         `;
 
     listado_productos.innerHTML = htmlProducto;
@@ -65,25 +64,25 @@ function crearFormularioPut(event, producto) {
             <input type="hidden" name="id" value="${producto.id}">
 
             <label for="nameProd">Nombre</label>
-            <input type="text" name="name" id="nameProd" value="${producto.name}" required>
+            <input type="text" name="name" id="nameProd" value="${producto.nombre}" required>
             <br>
 
             <label for="imageProd">Imagen</label>
-            <input type="text" name="image" id="imageProd" value="${producto.image}" required>
+            <input type="text" name="image" id="imageProd" value="${producto.imagen}" required>
             <br>
 
             <label for="categoryProd">Categoria</label>
             <select name="category" id="categoryProd" required>
-                <option value="food">comida</option>
-                <option value="drink">bebida</option>
+                <option value="camiseta">camiseta</option>
+                <option value="calzado">calzado</option>
             </select>
             <br>
 
             <label for="priceProd">Precio</label>
-            <input type="number" name="price" id="priceProd" value="${producto.price}" required>
+            <input type="number" name="price" id="priceProd" value="${producto.precio}" required>
             <br>
 
-            <input type="hidden" name="active" value="${producto.active}">
+            <input type="hidden" name="active" value="${producto.activo}">
 
             <input type="submit" value="Actualizar producto">
         </form>

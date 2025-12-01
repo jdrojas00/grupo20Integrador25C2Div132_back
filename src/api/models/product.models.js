@@ -22,12 +22,7 @@ const insertProduct = (name, category, price, image) => {
 }
 
 const updateProduct = (name, image, category, price, active, id) => {
-    let sql = `
-        UPDATE productos
-        SET name = ?, image = ?, category = ?, price = ?, active = ?
-        WHERE id = ?
-    `;
-
+    let sql = "UPDATE productos SET nombre = ?, imagen = ?, tipo = ?, precio = ?, activo = ? WHERE id = ?";
     return connection.query(sql, [name, image, category, price, active, id]);
 }
 
@@ -35,7 +30,7 @@ const deleteProduct = (id) => {
     //let sql = `DELETE FROM productos WHERE id = ?`;
 
     // Opcion 2: Baja logica
-    let sql2 = `UPDATE productos set active = 0 WHERE id = ?`;
+    let sql2 = "UPDATE productos set activo = 0 WHERE id = ?";
 
     return connection.query(sql2, [id]);
 }

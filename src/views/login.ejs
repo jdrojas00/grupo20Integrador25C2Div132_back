@@ -4,31 +4,24 @@
 
     <h1><%= about %></h1>
 
-    <% if (typeof error !== "undefined") { %>
-        <div class="error-box"><%= error %></div>
-    <% } %>
+    
 
     <form id="login-form" action="/login" method="POST">
-
+        <% if (typeof error !== "undefined") { %>
+            <div class="error-box"><%= error %></div>
+        <% } %>
         <label>Email</label>
         <input type="email" name="email" id="emailUser">
 
         <label>Contraseña</label>
         <input type="password" name="password" id="passwordUser">
 
-        <button class="btn">Ingresar</button>
+        <button class="btn-login">Ingresar</button>
 
-        <button type="button" id="acceso" class="btn">Acceso rápido</button>
-
+        <button type="button" id="acceso">Acceso rápido</button>
     </form>
 </main>
 
 <script src="/js/login.js"></script>
-<script>
-document.getElementById("acceso").addEventListener("click", () => {
-    emailUser.value = "test@test.com";
-    passwordUser.value = "test";
-});
-</script>
 
 <%- include("partials/footer.ejs") %>

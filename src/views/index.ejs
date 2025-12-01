@@ -12,11 +12,17 @@
                 <img src="<%= prod.imagen %>" alt="<%= prod.nombre %>">
                 <h5><%= prod.nombre %></h5>
                 <p>Id: <%= prod.id %></p>
-                <p>$<%= prod.precio %></p>
+                <p>$<%= prod.precio.toLocaleString("es-AR") %></p>
+
+                <% if (prod.activo == 0) { %>
+                    <button class="btn-actualizar" data-id="<%= prod.id %>">Activar</button>
+                <% } %>
             </div>
         <% }) %>
 
     </div>
 </main>
+
+<script src="/js/activar.js"></script>
 
 <%- include("partials/footer.ejs") %>
