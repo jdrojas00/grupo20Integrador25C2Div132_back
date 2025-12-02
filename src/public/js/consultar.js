@@ -45,7 +45,7 @@ function mostrarProducto(producto) {
     let htmlProducto = `
         <li class="li-listados">
             <img src="${producto.imagen}" alt="${producto.nombre}" class="img-listados">
-            <p>Id: ${producto.id}/ Nombre: ${producto.nombre}/ <strong>Precio: $${producto.precio.toLocaleString("es-AR")}</strong></p>
+            <p>Id: ${producto.id}<br>Nombre: ${producto.nombre}<br><strong>Precio: $${producto.precio.toLocaleString("es-AR")}</strong></p>
         </li>
         `;
 
