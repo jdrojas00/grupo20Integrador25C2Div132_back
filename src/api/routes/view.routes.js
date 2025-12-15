@@ -2,6 +2,7 @@ import { Router } from "express";
 import { productsView } from "../controllers/view.controllers.js";
 import { loginUser, logoutUser } from "../controllers/auth.controllers.js";
 import { requireLogin } from "../middlewares/middlewares.js";
+import { mostrarRegistros } from "../controllers/registros.controllers.js";
 const router = Router();
 
 router.get("/", requireLogin, productsView);
@@ -41,6 +42,13 @@ router.get("/login", (req, res) => {
         title: "Login",
         about: "Login dashboard"
     });
+});
+
+router.get("/registros", mostrarRegistros, requireLogin, (req, res) => {
+    res.render("registros", {
+        title: "Modificar",
+        about: "Actualizar producto"
+    })
 });
 
 router.post("/login", loginUser);

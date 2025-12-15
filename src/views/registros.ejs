@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros - Admin</title>
+
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <style>
+        body {
+            background: #f3f3f3;
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        table th {
+            background: #222;
+            color: white;
+            padding: 10px;
+        }
+
+        table td {
+            padding: 10px;
+            background: #fafafa;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 8px 15px;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #0056b3;
+        }
+
+        .toggle-btn {
+            background: #444;
+            padding: 5px 12px;
+            color: white;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Panel de Registros del Administrador</h1>
+
+    <!-- ==================================================== -->
+    <!-- 1. TOP PRODUCTOS MAS VENDIDOS -->
+    <!-- ==================================================== -->
+    <div class="card">
+        <h2>Top 10 Productos Más Vendidos</h2>
+
+        <button class="toggle-btn" data-target="topProductos">Ocultar</button>
+        <button class="btn download-excel" data-table="tablaProductos">Descargar Excel</button>
+
+        <div id="topProductos">
+            <table id="tablaProductos">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Tipo</th>
+                        <th>Precio</th>
+                        <th>Vendidos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% topProductos.forEach(p => { %>
+                        <tr>
+                            <td><%= p.id %></td>
+                            <td><%= p.nombre %></td>
+                            <td><%= p.tipo %></td>
+                            <td>$<%= p.precio %></td>
+                            <td><%= p.total_vendido %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 2. TOP VENTAS MAS CARAS -->
+    <!-- ==================================================== -->
+    <div class="card">
+        <h2>Top 10 Ventas Más Caras</h2>
+
+        <button class="toggle-btn" data-target="topVentas">Ocultar</button>
+        <button class="btn download-excel" data-table="tablaVentas">Descargar Excel</button>
+
+        <div id="topVentas">
+            <table id="tablaVentas">
+                <thead>
+                    <tr>
+                        <th>ID Venta</th>
+                        <th>Usuario</th>
+                        <th>Total</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% topVentas.forEach(v => { %>
+                        <tr>
+                            <td><%= v.id %></td>
+                            <td><%= v.usuario %></td>
+                            <td>$<%= v.total %></td>
+                            <td><%= v.fecha %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 3. LOGS ADMIN -->
+    <!-- ==================================================== -->
+    <div class="card">
+        <h2>Logs de Administradores</h2>
+
+        <button class="toggle-btn" data-target="logsAdmin">Ocultar</button>
+        <button class="btn download-excel" data-table="tablaLogs">Descargar Excel</button>
+
+        <div id="logsAdmin">
+            <table id="tablaLogs">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Administrador</th>
+                        <th>Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% logsAdmin.forEach(l => { %>
+                        <tr>
+                            <td><%= l.id %></td>
+                            <td><%= l.admin %></td>
+                            <td><%= l.fecha %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==================================================== -->
+    <!-- 4. ESTADISTICAS -->
+    <!-- ==================================================== -->
+    <div class="card">
+        <h2>Estadísticas Generales</h2>
+
+        <table>
+            <tr>
+                <th>Total de Ventas</th>
+                <th>Total Recaudado</th>
+            </tr>
+            <tr>
+                <td><%= totalVentas.total %></td>
+                <td>$<%= totalRecaudado.total %></td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="/js/registros.js"></script>
+
+</body>
+</html>
