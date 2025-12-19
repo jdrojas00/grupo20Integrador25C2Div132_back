@@ -12,11 +12,23 @@ export async function insertEncuesta(encuesta) {
         encuesta.imagen,
         encuesta.fecha
     ];
-    await db.query(sql, params);
+    try {
+        const [result] = await db.query(sql, params);
+        return result;
+    } catch (error) {
+        console.error('DB error insertEncuesta:', error);
+        throw error;
+    }
 }
 
 export async function getAllEncuestas() {
     const sql = `SELECT * FROM encuestas ORDER BY fecha DESC`;
-    const [rows] = await db.query(sql);
-    return rows;
+    try {
+        const [rows] = await db.query(sql);
+        console.log('getAllEncuestas - rows fetched:', rows.length);
+        return rows;
+    } catch (error) {
+        console.error('DB error getAllEncuestas:', error);
+        throw error;
+    }
 }

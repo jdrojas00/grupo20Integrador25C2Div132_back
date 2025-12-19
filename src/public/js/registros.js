@@ -43,13 +43,26 @@ function exportTableToExcel(tableID, filename = '') {
 }
 
 // ---------------------------
-// SCROLL A LA SECCIÓN
+// DESCARGAR EXCEL DESDE API
 // ---------------------------
-document.querySelectorAll(".go-to").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const target = btn.dataset.target;
-        document.getElementById(target).scrollIntoView({
-            behavior: "smooth"
+function descargarEncuestasExcel() {
+    fetch('/api/encuestas/excel')
+        .then(resp => {
+            if (!resp.ok) throw new Error('Error descargando Excel');
+            return resp.blob();
+        })
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'encuestas.xlsx';
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al descargar el Excel de encuestas');
         });
-    });
-});
+}

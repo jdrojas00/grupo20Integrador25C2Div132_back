@@ -15,7 +15,6 @@ import { join, __dirname } from "./src/api/utils/index.js";
 import session from "express-session";
 const SESSION_KEY = environments.session_key;
 
-app.use("/api", encuestaRoutes);
 
 /* Middlewares */
 app.use(cors());
@@ -46,6 +45,9 @@ app.use("/api/products", productRoutes);
 app.use("/", viewRoutes);
 
 app.use("/api/ticket", ticketRoutes);
+
+
+app.use("/api", encuestaRoutes);
 
 
 /* Server */
